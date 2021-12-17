@@ -6,13 +6,13 @@
 //
 
 import UIKit
-
-// Login by Firebase Auth
+import Network
 
 class LoginViewController: UIViewController {
     
     @IBOutlet var idTxtField: UITextField!
     @IBOutlet var passwordTxtField: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,13 @@ class LoginViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
 
+            return
+        }
+        
+        if !Reachability.isConnectedToNetwork() {
+            let alert = UIAlertController(title: "Alert", message: "No Internet Connections!\nPlease connect to internet.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
             return
         }
         

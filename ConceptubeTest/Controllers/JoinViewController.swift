@@ -8,7 +8,7 @@
 import UIKit
 
 class JoinViewController: UIViewController {
-
+    
     @IBOutlet var idTxtField: UITextField!
     @IBOutlet var passwordTxtField: UITextField!
     @IBOutlet var rePasswordTxtFeild: UITextField!
@@ -19,6 +19,8 @@ class JoinViewController: UIViewController {
     @IBOutlet var btnSignUp: UIButton!
     
     @IBOutlet var scrollView: UIScrollView!
+    
+    private var STRONG_PASSWORD: Int = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +36,8 @@ class JoinViewController: UIViewController {
         super.viewWillLayoutSubviews()
         
         let totalHeight = stackView.frame.size.height + btnSignUp.frame.size.height
-        print(totalHeight)
-        print(view.frame.size.height)
-        if totalHeight > view.bounds.size.height {
-            scrollView.contentSize.height = totalHeight
-        }
-        else {
-            scrollView.contentSize.height = totalHeight
-        }
+        scrollView.contentSize.height = totalHeight + (totalHeight > view.bounds.size.height ? 50 : 0)
+        
     }
     
     @IBAction func didTapCheckID() {
@@ -54,26 +50,26 @@ class JoinViewController: UIViewController {
         }
         
         
-//        let defaults = UserDefaults.standard
+        //        let defaults = UserDefaults.standard
         
-//        let query = Constants.refs.databaseAuth.queryEqual(toValue: id, childKey: "ID")
-//        _ = query.observe(.value, with: { [weak self] snapshot in
-//            if  let data = snapshot.value as? [String: Any]
-//            {
-//                print(data)
-//                let fID          = data["ID"]
-//                if id == fID {
-//                    let alert = UIAlertController(title: "Alert", message: "Please fill other ID!", preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//                    self?.present(alert, animated: true, completion: nil)
-//                }
-//            }
-//        })
+        //        let query = Constants.refs.databaseAuth.queryEqual(toValue: id, childKey: "ID")
+        //        _ = query.observe(.value, with: { [weak self] snapshot in
+        //            if  let data = snapshot.value as? [String: Any]
+        //            {
+        //                print(data)
+        //                let fID          = data["ID"]
+        //                if id == fID {
+        //                    let alert = UIAlertController(title: "Alert", message: "Please fill other ID!", preferredStyle: .alert)
+        //                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        //                    self?.present(alert, animated: true, completion: nil)
+        //                }
+        //            }
+        //        })
         
         Constants.refs.databaseAuth.getData(completion: { [weak self] error, snapshot in
             guard error == nil else {
-              print(error!.localizedDescription)
-              return;
+                print(error!.localizedDescription)
+                return;
             }
             print("GET DATA")
             if let data = snapshot.value as? NSDictionary //[String: String]
@@ -91,7 +87,7 @@ class JoinViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self?.present(alert, animated: true, completion: nil)
             }
-          });
+        });
         
     }
     
@@ -105,6 +101,13 @@ class JoinViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             
+            return
+        }
+        
+        if password.count < STRONG_PASSWORD {
+            let alert = UIAlertController(title: "Alert", message: "Your password must be your at least \(STRONG_PASSWORD) characters!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
             return
         }
         
@@ -122,6 +125,13 @@ class JoinViewController: UIViewController {
             return
         }
         
+        if !Reachability.isConnectedToNetwork() {
+            let alert = UIAlertController(title: "Alert", message: "No Internet Connections!\nPlease connect to internet.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
         let timeFormatter = DateFormatter()
         timeFormatter.dateStyle = DateFormatter.Style.long
         let birthday = timeFormatter.string(from: birthDayTxtField.date)
@@ -132,20 +142,21 @@ class JoinViewController: UIViewController {
         
         ref.setValue(data)
         
-//        If the member registration is successful with the member registration
-//        button, the screen is switched to the login page with a member registration
-//        success message.
-        
-        navigationController?.popViewController(animated: true)
+        // show success dialog
+        let alert = UIAlertController(title: "Success", message: "Your registration is successful! Login now!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Go to Login", style: .default, handler: ({ [weak self] action in
+            self?.navigationController?.popViewController(animated: true)
+        })))
+        present(alert, animated: true, completion: nil)
         
     }
     
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
+        
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
-
-
+    
+    
 }

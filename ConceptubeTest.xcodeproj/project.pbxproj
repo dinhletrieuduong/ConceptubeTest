@@ -17,6 +17,7 @@
 		32381FB82769F58200FBD478 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32381FB72769F58200FBD478 /* JoinViewController.swift */; };
 		32381FBC276A020400FBD478 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32381FBB276A020400FBD478 /* GoogleService-Info.plist */; };
 		324BF56B276A3E5C0094E4BB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BF56A276A3E5C0094E4BB /* Constants.swift */; };
+		32BBF132276D057B005CFBF6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BBF131276D057B005CFBF6 /* Reachability.swift */; };
 		32FCFC2B276AE873005E896F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCFC2A276AE872005E896F /* CardView.swift */; };
 		32FCFC2D276AE87C005E896F /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FCFC2C276AE87C005E896F /* CardView.xib */; };
 		B38B984945C231FCC4951AB5 /* Pods_ConceptubeTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D63192B941F315E41F389C /* Pods_ConceptubeTest.framework */; };
@@ -35,6 +36,7 @@
 		32381FB72769F58200FBD478 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		32381FBB276A020400FBD478 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		324BF56A276A3E5C0094E4BB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		32BBF131276D057B005CFBF6 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		32FCFC2A276AE872005E896F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		32FCFC2C276AE87C005E896F /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
 		A08220C64EDAB7C877183C4A /* Pods-ConceptubeTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConceptubeTest.debug.xcconfig"; path = "Target Support Files/Pods-ConceptubeTest/Pods-ConceptubeTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				324BF56A276A3E5C0094E4BB /* Constants.swift */,
+				32BBF131276D057B005CFBF6 /* Reachability.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				32381FA22769F50900FBD478 /* AppDelegate.swift in Sources */,
 				32381FB82769F58200FBD478 /* JoinViewController.swift in Sources */,
 				32381FA42769F50900FBD478 /* SceneDelegate.swift in Sources */,
+				32BBF132276D057B005CFBF6 /* Reachability.swift in Sources */,
 				324BF56B276A3E5C0094E4BB /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,7 +345,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -396,7 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -423,6 +427,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,6 +458,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
